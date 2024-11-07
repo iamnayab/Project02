@@ -1,0 +1,54 @@
+<div class="container" >
+    <h1>Employees</h1>
+    <table class="table table-bordered">
+        <thead>
+            <tr class="table-dark">
+                <td>Employee ID</td>
+                <td>First Name</td>
+                <td>Last Name</td>
+                <td>Salary</td>
+                <td>DOB</td>
+                <td>Email</td>
+                <td>Action</td>
+            </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let emp of employee; index as i;">
+            <ng-template [ngIf]="currentIndex != i">
+            <td >{{emp.id}}</td>
+            <td>{{emp.first_name}}</td>
+            <td>{{emp.last_name}}</td>
+            <td>{{emp.salary}}</td>
+            <td>{{emp.dob}}</td>
+            <td>{{emp.email}}</td>
+            </ng-template>
+        <ng-template [ngIf]="showEdit && currentIndex == i">
+            <td>
+                <input class="form-control" type="number"[(ngModel)]="emp.id">
+            </td>
+            <td>
+                <input class="form-control" type="text"[(ngModel)]="emp.first_name">
+            </td>
+            <td>
+                <input class="form-control" type="text"[(ngModel)]="emp.last_name">
+            </td>
+            <td>
+                <input class="form-control" type="number"[(ngModel)]="emp.salary">
+            </td>
+            <td>
+                <input class="form-control" type="date"[(ngModel)]="emp.dob">
+            </td>
+            <td>
+                <input class="form-control" type="email"[(ngModel)]="emp.email">
+            </td>
+        </ng-template>
+        <ng-template [ngIf]="currentIndex != i">
+            <td class="text-center"><button class="btn btn-primary"(click)="EditEmp();currentIndex=i">Edit</button></td>
+        </ng-template>
+        <ng-template [ngIf]="showEdit && currentIndex==i">
+            <td class="text-center"><button class="btn btn-primary"(click)="UpdateEmp();currentIndex=null">Update</button></td>
+        </ng-template> 
+        </tr>
+        </tbody>
+    </table>
+</div>

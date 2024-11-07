@@ -1,0 +1,41 @@
+<div class="container cont">
+    <h3 class="text-center">User Registration using Template driven form</h3>
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-sm-12 col-md-6 col-lg-4">
+            <form #contactform="ngForm" (ngSubmit)="onsubmit(contactform)"appPasswordmatch>
+                <div>
+                   <input type="text" placeholder="Full Name" name="Full Name" class="form-control" ngModel required #fullname="ngModel">
+                   <small *ngIf="fullname.invalid && fullname.touched">Full name is required and must be a valid name</small>
+                </div>
+                <div>
+                    <input type="email" placeholder="Email" name="email" class="form-control" ngModel required email="@gmail.com" #email="ngModel">
+                    <small *ngIf="email.invalid && email.touched">Email is required</small>
+                </div>
+                <div>
+                    <input type="text" placeholder="Phone Number" name="Number" class="form-control" ngModel required minlength="10" maxlength="12" #phone="ngModel">
+                    <small *ngIf="phone.invalid && phone.errors?.['required'] && phone.touched">Phone is required</small>
+                    <small *ngIf="phone.errors?.['minlength']">Number must be 10 to 12 digit</small>
+                </div>
+                <div>
+                    <input type="password" placeholder="Password" name="Password" class="form-control" ngModel required minlength="6" #password="ngModel">
+                    <small *ngIf="password.invalid && password.errors?.['required'] && password.touched"> Password is required</small>
+                    <small *ngIf="password.errors?.['minlength']">!Password must be atleast 6 characters.</small>
+               </div>
+               <div>
+                    <input type="password" placeholder="Confirm Password" name="ConfirmPassword" class="form-control" ngModel required minlength="6" #confirmpassword="ngModel">
+                    <small *ngIf="confirmpassword.invalid && confirmpassword.errors?.['required'] && confirmpassword.touched ">Confirm password is required</small>
+                    <small *ngIf="confirmpassword.errors?.['minlength']">!Password must be atleast 6 characters.</small>
+                    <small *ngIf="confirmpassword.invalid && confirmpassword.touched && confirmpassword.errors?.['matchPassword']">Password missmatch</small>
+               </div>
+               <div>
+                    <input type="checkbox" name="terms and condition" ngModel required><b>Agree with terms and condition</b>
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-primary" [disabled]="!contactform.valid">Sing Up</button>
+                </div>
+           </form>
+        </div>
+        <div class="col"></div>
+    </div>
+</div>

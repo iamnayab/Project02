@@ -1,0 +1,26 @@
+<div class="container">
+    <h1>Employees</h1>
+    <table class="table table-bordered">
+        <thead>
+            <tr class="table-dark">
+                <td>Employee ID</td>
+                <td>First Name</td>
+                <td>Last Name</td>
+                <td>Salary</td>
+                <td>DOB</td>
+                <td>Email</td>
+            </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let emp of employee4">
+            <td>{{emp.id}}</td>
+            <td >{{emp.first_name}}</td>
+            <td>{{emp.last_name}}</td>
+            <td>{{emp.salary | currency}}</td>
+            <td>{{emp.dob | date:"mediumDate"| uppercase}}</td>
+            <td>{{emp.email}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+

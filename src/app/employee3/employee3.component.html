@@ -1,0 +1,23 @@
+<div class="container">
+    <h1>Employees</h1>
+    <table class="table table-bordered">
+        <thead>
+            <tr class="table-dark">
+                <td>Employee ID</td>
+                <td>First Name</td>
+                <td>Last Name</td>
+                <td>Salary</td>
+                <td>DOB</td>
+                <td>Email</td>
+            </tr>
+        </thead>
+        <tr *ngFor="let emp of employee3"appHighlight>
+            <td>{{emp.id}}</td>
+            <td >{{emp.first_name}}</td>
+            <td>{{emp.last_name}}</td>
+            <td>{{emp.salary}}</td>
+            <td>{{emp.dob}}</td>
+            <td>{{emp.email}}</td>
+        </tr>
+    </table>
+</div>

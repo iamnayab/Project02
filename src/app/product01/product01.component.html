@@ -1,0 +1,18 @@
+<div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let pro of product">
+                <td>{{pro.name}}</td>
+                <td>{{pro.price | currency:'INR'}}</td>
+                <td><button class="btn btn-primary" routerLink="/product01/{{pro.id}}">View Detail</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

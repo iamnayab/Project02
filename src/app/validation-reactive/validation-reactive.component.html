@@ -1,0 +1,53 @@
+<div class="container cont">
+    <h3 class="text-center">{{title}}</h3>
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-sm-12 col-md-6 col-lg-4">
+            <!-- && RegisterForm.status === 'INVALID' -->
+            <form [formGroup]="RegisterForm" (ngSubmit)="Registeruser(RegisterForm)">
+                <div>
+                   <input type="text" placeholder="Full Name" class="form-control" formControlName="name" [ngClass]="{error:getControl('name')?.errors && getControl('name')?.touched}">
+                   <small class="text-danger" *ngIf="getControl('name')?.errors?.['required'] && getControl('name')?.touched">Full Name is required and must be a valid name</small>
+                </div>
+                <div>
+                    <input type="email" placeholder="Email" class="form-control" formControlName="email" [ngClass]="{error:getControl('email')?.errors && getControl('email')?.touched}">
+                    <small class="text-danger" *ngIf="getControl('email')?.errors?.['required'] && getControl('email')?.touched">Email is required</small>
+                    <small class="text-danger" *ngIf="getControl('email')?.errors?.['pattern']">Please enter a valid email addresss</small>
+                </div>
+                 <div>
+                    <input type="text" placeholder="Address" class="form-control" formControlName="address" [ngClass]="{error:getControl('address')?.errors && getControl('address')?.touched}">
+                    <small class="text-danger" *ngIf="getControl('address')?.errors?.['required'] && getControl('address')?.touched">Address is required</small>
+                </div>
+                 <div>
+                    <input type="text" placeholder="City" class="form-control" formControlName="city" [ngClass]="{error:getControl('city')?.errors && getControl('city')?.touched}">
+                    <small class="text-danger" *ngIf="getControl('city')?.errors?.['required'] && getControl('city')?.touched">City is required</small>
+                </div>
+                <div>
+                    <input type="text" placeholder="Phone Number" class="form-control" formControlName="phonenumber" [ngClass]="{error:getControl('phonenumber')?.errors && getControl('phonenumber')?.touched}">
+                    <small class="text-danger" *ngIf="getControl('phonenumber')?.errors?.['required'] && getControl('phonenumber')?.touched">Phone is required</small>
+                    <small class="text-danger" *ngIf="getControl('phonenumber')?.errors?.['minlength']">Phone must be 10 to 12 digit</small>
+                    <small class="text-danger" *ngIf="getControl('phonenumber')?.errors?.['maxlength']">phone must be under 12 digit</small>
+                </div>
+                <div>
+                    <input type="password" placeholder="Password" class="form-control" formControlName="password" [ngClass]="{error:getControl('password')?.errors && getControl('password')?.touched}">
+                    <small class="text-danger" *ngIf="getControl('password')?.errors?.['required'] && getControl('password')?.touched">Password is required</small>
+                    <small class="text-danger" *ngIf="getControl('password')?.errors?.['minlength']">Password must be at least 6 character</small>
+               </div>
+               <div>
+                    <input type="password" placeholder="Confirm Password" class="form-control" formControlName="confirmpassword" [ngClass]="{error:getControl('confirmpassword')?.errors && getControl('confirmpassword')?.touched}">
+                    <small class="text-danger" *ngIf="getControl('confirmpassword')?.errors?.['required'] && getControl('confirmpassword')?.touched">Confirm Password is required</small>
+               </div>
+               <div *ngIf="getControl('confirmpassword')?.touched && RegisterForm.errors?.['PasswordMisMatchError']">
+                   <small class="text-danger">Password Miss Match</small>
+               </div>
+               <div>
+                    <input type="checkbox" formControlName="check" [ngClass]="{error:getControl('check')?.errors?.['required'] && getControl('check')?.touched}"><b>Agree with terms and condition</b>
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-primary" [disabled]="RegisterForm.status === 'INVALID'">Register</button>
+                </div>
+            </form>    
+        </div>
+        <div class="col"></div>
+    </div>
+</div>
